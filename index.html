@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es-CR">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover: necesario para respetar el área segura en iPhone -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#2f6f95" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- SEO ---------------------------------------------------------------->
+    <title>Clínica Fisio San Martín | Fisioterapia en Liberia, Guanacaste</title>
+    <meta
+      name="description"
+      content="Clínica Fisio San Martín: fisioterapia en Barrio Moracia, Liberia, Guanacaste. Diagnósticos y tratamientos precisos para mejorar tu calidad de vida y tu rendimiento. Agendá tu cita en línea."
+    />
+    <meta name="robots" content="index, follow" />
+    <!-- Cuando el sitio tenga dominio propio, añadir aquí:
+         <link rel="canonical" href="https://DOMINIO/" />
+         <meta property="og:url" content="https://DOMINIO/" /> -->
+
+    <!-- Open Graph / redes sociales ---------------------------------------->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CR" />
+    <meta property="og:site_name" content="Clínica Fisio San Martín" />
+    <meta property="og:title" content="Clínica Fisio San Martín | Fisioterapia en Liberia" />
+    <meta
+      property="og:description"
+      content="Diagnósticos y tratamientos precisos. Mejoramos tu calidad de vida y tu rendimiento. Fisioterapia en Barrio Moracia, Liberia, Guanacaste."
+    />
+    <meta property="og:image" content="assets/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Equipo de fisioterapeutas de Clínica Fisio San Martín" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon ------------------------------------------------------------>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+    <!-- Tipografía --------------------------------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap"
+    />
+
+    <!-- Marca que hay JS: sin esto el contenido se muestra sin animaciones -->
+    <script>
+      document.documentElement.className += ' js';
+    </script>
+
+    <!-- Estilos ------------------------------------------------------------>
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <!-- =====================================================================
+         SPRITE DE ICONOS
+         ===================================================================== -->
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="i-calendar" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="16" rx="2" />
+        <path d="M8 3v4M16 3v4M3 10h18" />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="M4 12.5l5 5L20 6.5" />
+      </symbol>
+      <symbol id="i-clipboard" viewBox="0 0 24 24">
+        <rect x="4" y="5" width="16" height="16" rx="2" />
+        <path d="M9 5V3.6c0-.3.3-.6.6-.6h4.8c.3 0 .6.3.6.6V5" />
+        <path d="M8.6 13.2l2.3 2.3 4.5-4.7" />
+      </symbol>
+      <symbol id="i-hands" viewBox="0 0 24 24">
+        <path
+          d="M9 11.5V5a1.5 1.5 0 0 1 3 0v4.6M12 9.6V6.4a1.5 1.5 0 0 1 3 0v3.6M15 10.4V8.6a1.5 1.5 0 0 1 3 0V16a5.5 5.5 0 0 1-5.5 5.5h-1A5.5 5.5 0 0 1 6 16v-2.6l-1.6-1.6a1.5 1.5 0 0 1 2.1-2.1L9 11.5"
+        />
+      </symbol>
+      <symbol id="i-activity" viewBox="0 0 24 24">
+        <path d="M3 12.2h4L9.6 6l4.2 12 2.6-5.8H21" />
+      </symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path
+          d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6 19.6 19.6 0 0 1-3-8.6A2 2 0 0 1 3.3 2H6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 21 16.9Z"
+        />
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="m3.5 7 8.5 6 8.5-6" />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M20 10.5c0 5.5-8 11.5-8 11.5s-8-6-8-11.5a8 8 0 1 1 16 0Z" />
+        <circle cx="12" cy="10.3" r="2.8" />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5.2l3.2 2" />
+      </symbol>
+      <symbol id="i-route" viewBox="0 0 24 24">
+        <path d="M3 11 21 3l-8 18-2-8-8-2Z" />
+      </symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="i-facebook" viewBox="0 0 24 24">
+        <path
+          d="M9.1 23.7v-8H6.6v-3.7h2.5v-1.6c0-4 1.8-6 5.9-6 .4 0 .9 0 1.4.1l1.2.2v3.3l-.7-.1h-.7c-.7 0-1.3.1-1.7.3a1.7 1.7 0 0 0-.7.7c-.2.4-.3 1-.3 1.7V12h3.9l-.4 2.1-.3 1.6h-3.2v8.2C19.4 23.2 24 18.2 24 12c0-6.6-5.4-12-12-12S0 5.4 0 12c0 5.6 3.9 10.4 9.1 11.7Z"
+        />
+      </symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24">
+        <path
+          d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.4.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4M12 21.8a9.9 9.9 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.3-.4A9.9 9.9 0 0 1 2.1 12C2.1 6.5 6.6 2.1 12 2.1c2.7 0 5.2 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.4-4.4 9.8-9.9 9.8m8.4-18.3A11.8 11.8 0 0 0 12 0C5.5 0 .2 5.3.2 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.7c1.7 1 3.7 1.5 5.7 1.5 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4Z"
+        />
+      </symbol>
+    </svg>
+
+    <!-- =====================================================================
+         NAVBAR
+         ===================================================================== -->
+    <header class="site-header" id="site-header">
+      <div class="container">
+        <nav class="nav" aria-label="Navegación principal">
+          <a class="brand" href="#inicio" aria-label="Inicio — Clínica Fisio San Martín">
+            <img
+              class="brand__icon"
+              src="assets/isotipo-san-martin.png"
+              alt=""
+              width="560"
+              height="580"
+            />
+            <span class="brand__text">
+              <span class="brand__name" data-cfg-text="clinicShortName">Clínica San Martín</span>
+              <span class="brand__tag">Fisioterapia</span>
+            </span>
+          </a>
+
+          <ul class="nav__links">
+            <li><a class="nav__link" href="#inicio">Inicio</a></li>
+            <li><a class="nav__link" href="#servicios">Servicios</a></li>
+            <li><a class="nav__link" href="#equipo">Equipo</a></li>
+            <li><a class="nav__link" href="#ubicacion">Ubicación</a></li>
+            <li><a class="nav__link" href="agendar.html">Agendar</a></li>
+          </ul>
+
+          <div class="nav__actions">
+            <a class="btn btn--primary nav__cta" href="agendar.html">
+              <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+              Agendar cita
+            </a>
+            <!-- Mismo CTA, compacto, visible en la barra móvil sin hacer scroll -->
+            <a class="btn btn--primary nav__cta-sm" href="agendar.html">
+              <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+              Agendar
+            </a>
+            <button
+              class="nav__toggle"
+              id="nav-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="nav-panel"
+              aria-label="Abrir menú"
+            >
+              <svg class="icon icon--menu" aria-hidden="true"><use href="#i-menu"></use></svg>
+              <svg class="icon icon--close" aria-hidden="true"><use href="#i-close"></use></svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Menú móvil -->
+      <div class="nav__panel" id="nav-panel">
+        <a class="nav__panel-link" href="#inicio">Inicio</a>
+        <a class="nav__panel-link" href="#servicios">Servicios</a>
+        <a class="nav__panel-link" href="#equipo">Equipo</a>
+        <a class="nav__panel-link" href="#ubicacion">Ubicación</a>
+        <a class="nav__panel-link" href="agendar.html">Agendar</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ===================================================================
+           HERO
+           =================================================================== -->
+      <section class="hero" id="inicio">
+        <div class="container">
+          <div class="hero__grid">
+            <div class="hero__content">
+              <p class="eyebrow">Fisioterapia en Liberia, Guanacaste</p>
+
+              <h1 class="hero__title">
+                Pasión, entrega y
+                <span class="is-brand">resultados.</span>
+              </h1>
+
+              <p class="hero__text">
+                Somos Clínica Fisio San Martín. Diagnósticos y tratamientos precisos para
+                mejorar tu calidad de vida y tu rendimiento.
+              </p>
+            </div>
+
+            <!-- En móvil la foto se coloca entre el texto y el CTA (orden del DOM);
+                 en escritorio vuelve a la columna derecha con grid-template-areas. -->
+            <div class="hero__media">
+              <figure class="media hero__media-main ratio-landscape">
+                <img
+                  src="assets/equipo-san-martin.jpg"
+                  alt="Equipo de fisioterapeutas de Clínica Fisio San Martín"
+                  width="1500"
+                  height="1000"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </figure>
+            </div>
+
+            <div class="hero__cta">
+              <div class="hero__actions">
+                <a class="btn btn--primary btn--lg" href="agendar.html">
+                  <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+                  Agendar cita
+                </a>
+              </div>
+
+              <ul class="chips hero__chips">
+                <li class="chip">
+                  <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+                  Diagnósticos precisos
+                </li>
+                <li class="chip">
+                  <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+                  Tratamientos precisos
+                </li>
+                <li class="chip">
+                  <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+                  Calidad de vida y rendimiento
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SERVICIOS
+           =================================================================== -->
+      <section class="section section--alt services" id="servicios">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">Servicios</p>
+            <h2>Fisioterapia, de principio a fin</h2>
+            <p class="lead">
+              Un mismo proceso para cada paciente: entender qué pasa, tratarlo con
+              precisión y devolverte la movilidad que necesitás.
+            </p>
+          </div>
+
+          <!-- Los textos salen de la información oficial de la clínica: no se
+               listan técnicas ni tratamientos concretos mientras no estén
+               confirmados. -->
+          <div class="services__grid">
+            <article class="card service-card" data-reveal>
+              <span class="service-card__icon" aria-hidden="true">
+                <svg class="icon"><use href="#i-clipboard"></use></svg>
+              </span>
+              <h3>Valoración y diagnóstico</h3>
+              <p class="service-card__text">
+                Todo empieza por saber qué te pasa. Valoramos tu caso para llegar a un
+                diagnóstico preciso antes de tratar.
+              </p>
+            </article>
+
+            <article class="card service-card" data-reveal style="--reveal-delay: 0.08s">
+              <span class="service-card__icon" aria-hidden="true">
+                <svg class="icon"><use href="#i-hands"></use></svg>
+              </span>
+              <h3>Tratamiento de fisioterapia</h3>
+              <p class="service-card__text">
+                Tratamientos precisos, guiados por el diagnóstico y ajustados a tu
+                proceso de recuperación.
+              </p>
+            </article>
+
+            <article class="card service-card" data-reveal style="--reveal-delay: 0.16s">
+              <span class="service-card__icon" aria-hidden="true">
+                <svg class="icon"><use href="#i-activity"></use></svg>
+              </span>
+              <h3>Calidad de vida y rendimiento</h3>
+              <p class="service-card__text">
+                El objetivo no es solo que dejes de sentir dolor: es que te muevas mejor y
+                rindas más en tu día a día.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           NUESTRO EQUIPO
+           =================================================================== -->
+      <section class="section team" id="equipo">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">Nuestro equipo</p>
+            <h2>Las personas que te atienden</h2>
+            <p class="lead">
+              Un equipo de fisioterapeutas que acompaña cada proceso de principio a fin.
+            </p>
+          </div>
+
+          <div class="team__grid">
+            <article class="card team-card team-card--lead" data-reveal>
+              <figure class="media media--zoom ratio-portrait">
+                <img
+                  src="assets/ariel.jpg"
+                  alt="Ariel, Director General y Fisioterapeuta de Clínica Fisio San Martín"
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="team-card__body">
+                <h3 class="team-card__name">Ariel</h3>
+                <p class="team-card__role">Director General y Fisioterapeuta</p>
+              </div>
+            </article>
+
+            <article class="card team-card" data-reveal style="--reveal-delay: 0.08s">
+              <figure class="media media--zoom ratio-portrait">
+                <img
+                  src="assets/joel.jpg"
+                  alt="Joel, Fisioterapeuta de Clínica Fisio San Martín"
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="team-card__body">
+                <h3 class="team-card__name">Joel</h3>
+                <p class="team-card__role">Fisioterapeuta</p>
+              </div>
+            </article>
+
+            <article class="card team-card" data-reveal style="--reveal-delay: 0.16s">
+              <figure class="media media--zoom ratio-portrait">
+                <img
+                  src="assets/andres.jpg"
+                  alt="Andrés, Fisioterapeuta de Clínica Fisio San Martín"
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="team-card__body">
+                <h3 class="team-card__name">Andrés</h3>
+                <p class="team-card__role">Fisioterapeuta</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           UBICACIÓN
+           =================================================================== -->
+      <section class="section section--alt location" id="ubicacion">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">Ubicación</p>
+            <h2>Encontranos en Liberia</h2>
+            <p class="lead">
+              Estamos en Barrio Moracia, a 50 metros al norte de la Iglesia Hosanna.
+            </p>
+          </div>
+
+          <div class="location__grid">
+            <!-- Mapa: la URL vive en js/config.js (googleMapsEmbedUrl) -->
+            <div class="map" data-reveal>
+              <iframe
+                id="map-frame"
+                title="Mapa de ubicación de Clínica Fisio San Martín"
+                data-cfg-src="googleMapsEmbedUrl"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <div data-reveal>
+              <ul class="info-list">
+                <li class="info-item">
+                  <span class="info-item__icon" aria-hidden="true">
+                    <svg class="icon"><use href="#i-pin"></use></svg>
+                  </span>
+                  <div>
+                    <p class="info-item__label">Dirección</p>
+                    <p class="info-item__value" data-cfg-text="address">
+                      50 metros al norte de la Iglesia Hosanna, Barrio Moracia, Liberia,
+                      Guanacaste.
+                    </p>
+                    <p class="info-item__note" data-cfg-text="addressDetail"></p>
+                  </div>
+                </li>
+
+                <li class="info-item">
+                  <span class="info-item__icon" aria-hidden="true">
+                    <svg class="icon"><use href="#i-clock"></use></svg>
+                  </span>
+                  <div>
+                    <p class="info-item__label">Horario</p>
+                    <ul class="schedule-list" id="schedule"></ul>
+                  </div>
+                </li>
+
+                <li class="info-item">
+                  <span class="info-item__icon" aria-hidden="true">
+                    <svg class="icon"><use href="#i-phone"></use></svg>
+                  </span>
+                  <div>
+                    <p class="info-item__label">Teléfono</p>
+                    <a class="info-item__value" data-cfg-href="telUrl" data-cfg-text="phone" href="#"
+                      >2665-2526</a
+                    >
+                    <a
+                      class="info-item__value"
+                      data-cfg-href="telUrlAlt"
+                      data-cfg-text="phoneAlt"
+                      href="#"
+                      >8869-2763</a
+                    >
+                  </div>
+                </li>
+
+                <li class="info-item">
+                  <span class="info-item__icon" aria-hidden="true">
+                    <svg class="icon"><use href="#i-mail"></use></svg>
+                  </span>
+                  <div>
+                    <p class="info-item__label">Correo</p>
+                    <a class="info-item__value" data-cfg-href="mailUrl" data-cfg-text="email" href="#"
+                      >clinicafisiosanmartin@gmail.com</a
+                    >
+                  </div>
+                </li>
+
+                <!-- WhatsApp: se muestra solo cuando se complete el número en
+                     js/config.js (campo whatsapp). -->
+                <li class="info-item" data-cfg-optional="whatsapp">
+                  <span class="info-item__icon" aria-hidden="true">
+                    <svg class="icon icon--solid"><use href="#i-whatsapp"></use></svg>
+                  </span>
+                  <div>
+                    <p class="info-item__label">WhatsApp</p>
+                    <a
+                      class="info-item__value"
+                      data-cfg-href="whatsappUrl"
+                      data-cfg-text="whatsappLabel"
+                      href="#"
+                      target="_blank"
+                      rel="noopener"
+                      >Escribinos</a
+                    >
+                  </div>
+                </li>
+              </ul>
+
+              <div class="location__actions">
+                <a
+                  class="btn btn--outline"
+                  data-cfg-href="googleMapsUrl"
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+                  Google Maps
+                </a>
+                <a
+                  class="btn btn--outline"
+                  data-cfg-href="wazeUrl"
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg class="icon" aria-hidden="true"><use href="#i-route"></use></svg>
+                  Waze
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- =====================================================================
+         FOOTER
+         ===================================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__intro">
+            <a class="footer__brand" href="#inicio" aria-label="Inicio — Clínica Fisio San Martín">
+              <img
+                src="assets/logo-san-martin.png"
+                alt="Clínica Fisio San Martín"
+                width="640"
+                height="855"
+              />
+            </a>
+            <p>
+              Fisioterapia en Barrio Moracia, Liberia, Guanacaste. Pasión, entrega y
+              resultados.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="footer__title">Secciones</h2>
+            <ul class="footer__list">
+              <li><a href="#servicios">Servicios</a></li>
+              <li><a href="#equipo">Equipo</a></li>
+              <li><a href="#ubicacion">Ubicación</a></li>
+              <li><a href="agendar.html">Agendar cita</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer__title">Ubicación</h2>
+            <ul class="footer__list">
+              <li data-cfg-text="address">
+                50 metros al norte de la Iglesia Hosanna, Barrio Moracia, Liberia,
+                Guanacaste.
+              </li>
+              <li>
+                <a data-cfg-href="googleMapsUrl" href="#" target="_blank" rel="noopener">
+                  Cómo llegar
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer__title">Contacto</h2>
+            <ul class="footer__list">
+              <li><a data-cfg-href="telUrl" data-cfg-text="phone" href="#">2665-2526</a></li>
+              <li><a data-cfg-href="telUrlAlt" data-cfg-text="phoneAlt" href="#">8869-2763</a></li>
+              <li>
+                <a data-cfg-href="mailUrl" data-cfg-text="email" href="#"
+                  >clinicafisiosanmartin@gmail.com</a
+                >
+              </li>
+            </ul>
+            <!-- Cada red aparece sola en cuanto se complete su dato en
+                 js/config.js; si está vacío, el enlace se elimina. -->
+            <ul class="social footer__social">
+              <li>
+                <a
+                  class="social__link"
+                  data-cfg-href="instagram"
+                  data-cfg-optional="instagram"
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Instagram"
+                >
+                  <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="social__link"
+                  data-cfg-href="facebook"
+                  data-cfg-optional="facebook"
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Facebook"
+                >
+                  <svg class="icon icon--solid" aria-hidden="true"><use href="#i-facebook"></use></svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="social__link"
+                  data-cfg-href="whatsappUrl"
+                  data-cfg-optional="whatsapp"
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="WhatsApp"
+                >
+                  <svg class="icon icon--solid" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>
+            © <span data-cfg-year>2026</span>
+            <span data-cfg-text="clinicName">Clínica Fisio San Martín</span>. Todos los
+            derechos reservados.
+          </p>
+          <p>Pasión, entrega y resultados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/config.js" defer></script>
+    <script src="js/script.js" defer></script>
+  </body>
+</html>

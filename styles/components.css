@@ -1,0 +1,530 @@
+/* =========================================================================
+   COMPONENTES — botones, navbar, imágenes, tarjetas, chips, redes y footer
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   Botones
+   ------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 13px 24px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color var(--t-fast), border-color var(--t-fast),
+    color var(--t-fast), transform var(--t-fast);
+}
+
+.btn .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background-color: var(--brand);
+  color: var(--on-brand);
+}
+
+.btn--primary:hover {
+  background-color: var(--brand-strong);
+}
+
+.btn--outline {
+  border-color: var(--border-strong);
+  color: var(--text);
+  background-color: var(--surface);
+}
+
+.btn--outline:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.btn--lg {
+  min-height: 58px;
+  padding: 17px 32px;
+  font-size: 1.0625rem;
+}
+
+/* En móvil los botones principales ocupan el ancho y son cómodos de tocar */
+@media (max-width: 599px) {
+  .btn {
+    min-height: 50px;
+  }
+
+  .btn--lg {
+    min-height: 54px;
+    padding: 15px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Navbar
+   ------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-base), box-shadow var(--t-base);
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: 0 1px 20px -12px rgba(31, 42, 51, 0.4);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Isotipo del logo (columna vertebral). El nombre va como texto al lado:
+   el logotipo completo no se leería a la altura de una barra de navegación. */
+.brand__icon {
+  width: auto;
+  height: 34px;
+  object-fit: contain;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand__name {
+  font-size: var(--fs-small);
+}
+
+.brand__tag {
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.nav__links {
+  display: none;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav__link {
+  position: relative;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding-block: 6px;
+  transition: color var(--t-fast);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-fast);
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--text);
+}
+
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav__cta {
+  display: none;
+}
+
+/* CTA compacto SIEMPRE visible en la barra móvil */
+.nav__cta-sm {
+  min-height: 38px;
+  padding: 8px 14px;
+  gap: 6px;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.nav__cta-sm .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.nav__toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-right: -8px;
+  border-radius: var(--radius-xs);
+  color: var(--text);
+}
+
+.nav__toggle .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.nav__toggle .icon--close,
+.nav__toggle[aria-expanded='true'] .icon--menu {
+  display: none;
+}
+
+.nav__toggle[aria-expanded='true'] .icon--close {
+  display: block;
+}
+
+/* Panel móvil */
+.nav__panel {
+  position: fixed;
+  inset: var(--header-h) 0 auto 0;
+  z-index: 99;
+  max-height: calc(100dvh - var(--header-h));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 8px var(--gutter) 28px;
+  transform: translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t-base), transform var(--t-base),
+    visibility var(--t-base);
+}
+
+.nav__panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.nav__panel-link {
+  display: block;
+  padding: 15px 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+/* Pantallas muy angostas: queda el isotipo, nunca se sacrifica el CTA */
+@media (max-width: 379px) {
+  .brand__text {
+    display: none;
+  }
+
+  .nav__cta-sm {
+    padding-inline: 12px;
+  }
+}
+
+@media (min-width: 900px) {
+  .brand__icon {
+    height: 44px;
+  }
+
+  .brand__name {
+    font-size: 1rem;
+  }
+
+  .brand__tag {
+    font-size: 0.6875rem;
+  }
+
+  .nav__links {
+    display: flex;
+  }
+
+  .nav__cta {
+    display: inline-flex;
+  }
+
+  .nav__cta-sm,
+  .nav__toggle,
+  .nav__panel {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Imágenes
+   El contenedor fija la proporción y la imagen la rellena con object-fit,
+   así ninguna fotografía se deforma al cambiar de tamaño la pantalla.
+   ------------------------------------------------------------------------- */
+.media {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--gray-100);
+  border-radius: var(--radius-md);
+  isolation: isolate;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s var(--ease);
+}
+
+.media--zoom:hover img {
+  transform: scale(1.03);
+}
+
+/* Proporciones */
+.ratio-portrait {
+  aspect-ratio: 4 / 5;
+}
+.ratio-landscape {
+  aspect-ratio: 3 / 2;
+}
+
+/* -------------------------------------------------------------------------
+   Tarjetas
+   Base compartida por las tarjetas de servicios y las del equipo.
+   ------------------------------------------------------------------------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--t-base), transform var(--t-base),
+    box-shadow var(--t-base);
+}
+
+.card:hover {
+  border-color: var(--blue-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* -------------------------------------------------------------------------
+   Chips de confianza
+   ------------------------------------------------------------------------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.chip .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-strong);
+  stroke-width: 2.25;
+}
+
+/* -------------------------------------------------------------------------
+   Redes sociales
+   ------------------------------------------------------------------------- */
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social__link {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  background-color: var(--surface);
+  transition: color var(--t-fast), border-color var(--t-fast),
+    background-color var(--t-fast);
+}
+
+.social__link:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+  background-color: var(--bg-accent);
+}
+
+/* -------------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--blue-darker);
+  color: rgba(255, 255, 255, 0.72);
+  padding-block: clamp(48px, 6vw, 72px) 28px;
+  font-size: 0.9375rem;
+}
+
+/* En el footer sí cabe el logotipo completo, con el nombre incluido */
+.footer__brand {
+  display: inline-block;
+}
+
+.footer__brand img {
+  width: auto;
+  height: 104px;
+  object-fit: contain;
+}
+
+.footer__grid {
+  display: grid;
+  gap: 32px;
+}
+
+.footer__title {
+  margin-bottom: 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.footer__list {
+  display: grid;
+  gap: 10px;
+  overflow-wrap: anywhere;
+}
+
+.footer__list a:hover {
+  color: var(--white);
+}
+
+.site-footer .social__link {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.site-footer .social__link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--white);
+}
+
+.footer__social {
+  margin-top: 18px;
+}
+
+.footer__intro p {
+  margin-top: 18px;
+  max-width: 30ch;
+  font-size: 0.9375rem;
+}
+
+.footer__bottom {
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Móvil: dos columnas en vez de una pila de cuatro bloques — el footer pasa
+   de ~980 px a la mitad. El logo (primer bloque) y el contacto (último, con
+   el correo largo) ocupan la fila completa; secciones y ubicación se
+   reparten la del medio. */
+@media (max-width: 639px) {
+  .site-footer {
+    padding-block: 40px 24px;
+  }
+
+  .footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 18px;
+  }
+
+  .footer__intro,
+  .footer__grid > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer__brand img {
+    height: 84px;
+  }
+
+  .footer__intro p {
+    margin-top: 14px;
+  }
+
+  .footer__title {
+    margin-bottom: 12px;
+  }
+
+  .footer__bottom {
+    margin-top: 30px;
+    padding-top: 18px;
+  }
+}
+
+@media (min-width: 640px) {
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .footer__grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+    gap: 32px;
+  }
+}
+

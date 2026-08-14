@@ -1,0 +1,640 @@
+/* =========================================================================
+   SECCIONES — hero, servicios, equipo, ubicación y agenda
+   Cargar después de base.css y components.css.
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   HERO
+   ------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  padding-block: clamp(40px, 6vw, 76px) clamp(56px, 7vw, 96px);
+  background: linear-gradient(180deg, var(--blue-soft) 0%, var(--white) 62%);
+  overflow: hidden;
+}
+
+.hero__grid {
+  display: grid;
+  gap: clamp(38px, 6vw, 60px);
+  align-items: center;
+}
+
+.hero__title {
+  margin-bottom: 22px;
+}
+
+.hero__title .is-brand {
+  color: var(--brand);
+}
+
+.hero__text {
+  max-width: 52ch;
+  font-size: var(--fs-lead);
+  color: var(--text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.hero__chips {
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+
+/* Composición fotográfica */
+.hero__media {
+  position: relative;
+}
+
+/* La proporción del marco (3/2) es la misma que la de la fotografía, así
+   que el equipo se ve completo: object-fit no recorta nada. */
+.hero__media-main {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.hero__media::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: -18px;
+  width: 46%;
+  height: 46%;
+  border-left: 2px solid var(--brand);
+  border-top: 2px solid var(--brand);
+  border-radius: var(--radius-lg) 0 0 0;
+  opacity: 0.35;
+}
+
+/* -------------------------------------------------------------------------
+   MÓVIL: texto, foto y CTA en columna, cada uno con su altura natural.
+   El hero NO se estira hasta llenar la pantalla: si sobra alto, el hueco
+   aparecería justo debajo del navbar. La foto conserva su proporción
+   original para que no se recorte a nadie del equipo.
+   ------------------------------------------------------------------------- */
+@media (max-width: 899px) {
+  .hero {
+    display: flex;
+    padding-block: 18px 30px;
+  }
+
+  .hero > .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .hero__content,
+  .hero__cta,
+  .hero__media {
+    flex: none;
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 10px;
+    font-size: 0.75rem;
+    letter-spacing: 0.09em;
+  }
+
+  .hero .eyebrow::before {
+    width: 16px;
+  }
+
+  .hero__title {
+    margin-bottom: 10px;
+    line-height: 1.14;
+  }
+
+  .hero__text {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  /* La separación la da el gap del grid, no márgenes sueltos */
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    margin-top: 0;
+  }
+
+  .hero__chips {
+    margin-top: 14px;
+    padding-top: 12px;
+    gap: 4px 16px;
+  }
+
+  .hero__chips .chip {
+    font-size: 0.8125rem;
+  }
+
+  .hero__chips .chip .icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Tablet / ventanas medianas: ni el texto, ni la foto, ni el botón cruzan
+     toda la pantalla */
+  .hero__content,
+  .hero__text,
+  .hero__cta,
+  .hero__media {
+    max-width: 34rem;
+  }
+
+  .hero__media-main {
+    border-radius: var(--radius-md);
+  }
+
+  /* Fuera adornos: en una pantalla apretada solo estorban */
+  .hero__media::before {
+    display: none;
+  }
+}
+
+/* Teléfonos de pantalla baja: se comprime lo secundario, nunca el título, la
+   foto ni el botón de agendar. */
+@media (max-width: 899px) and (max-height: 720px) {
+  .hero {
+    padding-block: 14px 22px;
+  }
+
+  .hero__grid {
+    gap: 12px;
+  }
+
+  .hero__title {
+    font-size: 1.625rem;
+  }
+
+  .hero__text {
+    font-size: var(--fs-small);
+    line-height: 1.5;
+  }
+
+  .hero__chips {
+    margin-top: 10px;
+    padding-top: 10px;
+    gap: 2px 14px;
+  }
+
+  .hero__chips .chip {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero {
+    padding-block: clamp(32px, 3.5vw, 60px) clamp(40px, 4.5vw, 72px);
+  }
+
+  /* La foto vuelve a la columna derecha y abarca texto + CTA */
+  .hero__grid {
+    grid-template-columns: 1fr 1.05fr;
+    grid-template-areas:
+      'content media'
+      'cta     media';
+    column-gap: clamp(44px, 4.5vw, 70px);
+    row-gap: 0;
+    align-content: center;
+  }
+
+  .hero__content {
+    grid-area: content;
+  }
+
+  .hero__cta {
+    grid-area: cta;
+  }
+
+  .hero__media {
+    grid-area: media;
+    align-self: center;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   SERVICIOS
+   ------------------------------------------------------------------------- */
+.services__grid {
+  display: grid;
+  gap: 18px;
+  margin-top: clamp(36px, 5vw, 56px);
+}
+
+/* .card aporta fondo, borde y hover; aquí solo el interior */
+.service-card {
+  gap: 14px;
+  padding: clamp(24px, 3vw, 34px);
+}
+
+.service-card__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-accent);
+  color: var(--brand-strong);
+}
+
+.service-card__icon .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.service-card__text {
+  color: var(--text-muted);
+}
+
+@media (min-width: 760px) {
+  .services__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   EQUIPO
+   ------------------------------------------------------------------------- */
+.team__grid {
+  display: grid;
+  gap: 18px;
+  margin-top: clamp(36px, 5vw, 56px);
+}
+
+.team-card .media {
+  border-radius: 0;
+  background-color: var(--gray-050);
+}
+
+/* Retratos de estudio: encuadre alto para que la cara nunca quede cortada */
+.team-card .media img {
+  object-position: center top;
+}
+
+.team-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px clamp(18px, 2.4vw, 26px) 24px;
+}
+
+.team-card__name {
+  font-size: var(--fs-h3);
+}
+
+.team-card__role {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Dirección de la clínica: mismo formato, un punto más de jerarquía */
+.team-card--lead {
+  border-color: var(--blue-light);
+}
+
+.team-card--lead .team-card__body {
+  border-top: 3px solid var(--brand);
+}
+
+.team-card--lead .team-card__role {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+@media (min-width: 700px) {
+  .team__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   UBICACIÓN
+   ------------------------------------------------------------------------- */
+.location__grid {
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+  margin-top: clamp(36px, 5vw, 52px);
+  align-items: start;
+}
+
+.map {
+  position: relative;
+  min-height: 320px;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--gray-100);
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.info-list {
+  display: grid;
+  gap: 26px;
+}
+
+.info-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.info-item__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-accent);
+  color: var(--brand-strong);
+}
+
+.info-item__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.info-item > * {
+  min-width: 0;
+}
+
+.info-item__value {
+  display: block;
+  font-weight: 500;
+  color: var(--text);
+  /* El correo es una sola palabra larga: sin esto ensancha la columna y
+     provoca scroll horizontal en pantallas de 320 px. */
+  overflow-wrap: anywhere;
+}
+
+.info-item a.info-item__value:hover {
+  color: var(--brand);
+}
+
+.info-item__note {
+  margin-top: 4px;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+.info-item__note:empty {
+  display: none;
+}
+
+.schedule-list {
+  display: grid;
+  gap: 6px;
+  font-size: 0.9375rem;
+}
+
+.schedule-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 22rem;
+  color: var(--text-muted);
+}
+
+.schedule-list span:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.location__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 900px) {
+  .location__grid {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 64px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   PÁGINA DE AGENDA (agendar.html)
+   El calendario es un iframe externo que se mide solo (form_embed.js le
+   escribe la altura). Por eso su contenedor no lleva overflow, ni
+   transform, ni animación de entrada: cualquiera de las tres puede romper
+   el ajuste automático o recortar los desplegables del calendario.
+   ------------------------------------------------------------------------- */
+.booking {
+  padding-block: clamp(24px, 4vw, 48px) clamp(48px, 7vw, 90px);
+  background: linear-gradient(180deg, var(--blue-soft) 0%, var(--white) 52%);
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100dvh - var(--header-h));
+}
+
+.booking__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(18px, 3vw, 30px);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color var(--t-fast);
+}
+
+.booking__back:hover {
+  color: var(--brand);
+}
+
+.booking__back .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.booking__head {
+  text-align: center;
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.booking__head .lead {
+  margin-inline: auto;
+}
+
+/* Datos de la clínica junto al calendario: la página se sostiene sola */
+.booking__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
+  margin-top: 26px;
+}
+
+.booking__meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: var(--surface);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+.booking__meta .icon {
+  width: 15px;
+  height: 15px;
+  color: var(--brand);
+}
+
+.booking__meta a:hover {
+  color: var(--brand);
+}
+
+/* Tarjeta que enmarca el calendario. Sin overflow ni radio recortando al
+   iframe: solo la cabecera de marca lleva esquinas redondeadas. */
+.booking__card {
+  max-width: 62rem;
+  margin: clamp(28px, 4vw, 44px) auto 0;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.booking__card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px clamp(16px, 2.5vw, 26px);
+  background-color: var(--brand);
+  color: var(--on-brand);
+  border-radius: calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.booking__card-head .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.booking__card-head span {
+  margin-left: auto;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.booking__embed {
+  padding: clamp(10px, 1.6vw, 18px);
+  /* Reserva de espacio mientras el script mide el calendario: hasta que lo
+     hace, el iframe está fuera de flujo. El valor es menor que la altura
+     real del calendario (532 px en móvil, 786 px en escritorio) para que
+     después no sobre ningún hueco. */
+  min-height: 420px;
+}
+
+/* La altura la fija el script del proveedor: no ponerle min-height al
+   iframe o dejaría espacio muerto dentro del calendario. */
+.booking__embed iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+.booking__note {
+  max-width: 62rem;
+  margin: 26px auto 0;
+  text-align: center;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+.booking__note a {
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 599px) {
+  .booking__card-head span {
+    display: none;
+  }
+}
+
+/* =========================================================================
+   AJUSTES DE MÓVIL
+   Menos aire perdido, botones a ancho completo y bloques que respiran.
+   ========================================================================= */
+@media (max-width: 599px) {
+  /* Encabezados de sección */
+  .section-head .lead {
+    margin-top: 14px;
+    font-size: 1rem;
+  }
+
+  /* Servicios y equipo */
+  .services__grid,
+  .team__grid {
+    gap: 14px;
+  }
+
+  /* Retrato cuadrado: en una sola columna el formato 4/5 obligaba a
+     recorrer casi dos pantallas por cada compañero. */
+  .team-card .media {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Ubicación */
+  .map {
+    min-height: 0;
+    aspect-ratio: 5 / 4;
+  }
+
+  .info-list {
+    gap: 22px;
+  }
+
+  .info-item {
+    gap: 14px;
+  }
+
+  .location__actions {
+    margin-top: 26px;
+    padding-top: 22px;
+    gap: 10px;
+  }
+
+  /* A ancho completo: "Google Maps" partía en dos líneas al ir en pareja */
+  .location__actions .btn {
+    flex: 1 1 100%;
+  }
+}
