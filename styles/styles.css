@@ -324,6 +324,32 @@
 }
 
 /* -------------------------------------------------------------------------
+   VIDEO
+   El marco reserva la proporción real del archivo (832 × 464) antes de que
+   cargue el video, así no hay salto de maquetación. El tope de ancho evita
+   que un archivo de 832 px se estire hasta verse borroso en pantallas grandes.
+   ------------------------------------------------------------------------- */
+.video__frame {
+  max-width: 900px;
+  margin: clamp(36px, 5vw, 56px) auto 0;
+  aspect-ratio: 832 / 464;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  /* Fondo oscuro: solo se asoma mientras carga o en pantalla completa */
+  background-color: var(--blue-darker);
+  box-shadow: var(--shadow-md);
+}
+
+.video__player {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* contain, no cover: nunca recorta ni deforma la imagen */
+  object-fit: contain;
+}
+
+/* -------------------------------------------------------------------------
    UBICACIÓN
    ------------------------------------------------------------------------- */
 .location__grid {
